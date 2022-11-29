@@ -15,16 +15,14 @@ public class KontoTable extends Table<Konto> {
 
     @Override
     public boolean insert(Konto konto) throws SQLException {
-        return this.db.execute("INSERT INTO " + this.tableName + " (saldo) VALUES (" + konto.getSaldo() + ")");
-    }
-
-    public int insertGetNr(Konto konto) throws SQLException {
         ResultSet set = this.db.executeQuery("INSERT INTO " + this.tableName + " (saldo) " +
-                                             "VALUES (" + konto.getSaldo() + ") RETURNING " + this.tableName + ".nr");
+                "VALUES (" + konto.getSaldo() + ") RETURNING " + this.tableName + ".nr");
 
-        set.next();
+        if (!set.next()) return false;
 
-        return set.getInt("nr");
+        konto.setNr(set.getInt("nr"));
+
+        return true;
     }
 
     public Konto getKonto(int nr) throws SQLException {

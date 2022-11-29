@@ -1,7 +1,7 @@
 package datalayer.entities;
 
 public class Kunde {
-    private final int nr;
+    private int nr;
     private String name;
     private Konto konto;
 
@@ -13,6 +13,10 @@ public class Kunde {
 
     public int getNr() {
         return nr;
+    }
+
+    public void setNr(int nr) {
+        this.nr = nr;
     }
 
     public String getName() {

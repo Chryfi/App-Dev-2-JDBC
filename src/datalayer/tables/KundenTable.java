@@ -18,9 +18,9 @@ public class KundenTable extends Table<Kunde> {
 
     @Override
     public boolean insert(Kunde kunde) throws SQLException {
-        int kontoNr = this.db.getKontoTable().insertGetNr(kunde.getKonto());
+        if (!this.db.getKontoTable().insert(kunde.getKonto())) return false;
 
-        String values = '\'' + kunde.getName() + "'," + kontoNr;
+        String values = '\'' + kunde.getName() + "'," + kunde.getKonto().getNr();
 
         return this.db.execute("INSERT INTO " + this.tableName + " (name, konto_nr) VALUES (" + values + ")");
     }

@@ -1,7 +1,7 @@
 package datalayer.entities;
 
 public class Konto {
-    private final int nr;
+    private int nr;
     private double saldo;
 
     public Konto(int nr, double saldo) {
@@ -11,6 +11,10 @@ public class Konto {
 
     public int getNr() {
         return nr;
+    }
+
+    public void setNr(int nr) {
+        this.nr = nr;
     }
 
     public double getSaldo() {
