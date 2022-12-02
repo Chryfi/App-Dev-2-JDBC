@@ -2,27 +2,20 @@ package datalayer.tables;
 
 import datalayer.Database;
 
-import java.sql.SQLException;
-import java.util.List;
-
-public abstract class Table<T> {
+public class Table {
     protected Database db;
-    protected final String tableName;
+    protected final String name;
 
-    protected Table(Database db, String tableName) {
-        this.tableName = tableName;
+    public Table(Database db, String name) {
+        this.name = name;
         this.db = db;
     }
 
-    public String getTableName() {
-        return this.tableName;
+    public String getName() {
+        return this.name;
     }
 
     public Database getDatabase() {
         return this.db;
     }
-
-    public abstract boolean insert(T entity) throws SQLException;
-
-    public abstract boolean set(T entity) throws SQLException;
 }

@@ -28,6 +28,6 @@ public class Konto {
     @Override
     public String toString()
     {
-        return "Konto: nr = " + this.nr + ", saldo = " + this.saldo;
+        return "nr = " + this.nr + ", saldo = " + this.saldo;
     }
 }
